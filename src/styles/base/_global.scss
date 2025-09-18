@@ -1,0 +1,17 @@
+@import '../abstract/variables';
+@import '../abstract/mixins';
+
+html {
+    font-size: $font-size-base-mobile;
+}
+body {
+    font-family: $font-main;
+    font-size: 1rem;
+    color: $color-font;
+    background-color: $color-bg;
+}
+@include desktop {
+    html {
+        font-size: $font-size-base-desktop;
+    }
+}

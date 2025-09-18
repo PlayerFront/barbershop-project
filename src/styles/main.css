@@ -1,0 +1,16 @@
+html {
+  font-size: 14px;
+}
+
+body {
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 1rem;
+  color: #F1F1F1;
+  background-color: #2C2C2C;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}/*# sourceMappingURL=main.css.map */
