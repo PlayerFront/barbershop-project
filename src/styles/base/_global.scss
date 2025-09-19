@@ -4,14 +4,27 @@
 html {
     font-size: $font-size-base-mobile;
 }
+
 body {
     font-family: $font-main;
     font-size: 1rem;
+    font-weight: $font-weight-reg;
     color: $color-font;
     background-color: $color-bg;
 }
+
 @include desktop {
     html {
         font-size: $font-size-base-desktop;
+    }
+
+    body {
+        font-size: 1rem;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
     }
 }

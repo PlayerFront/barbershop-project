@@ -1,0 +1,29 @@
+@import '../../../../styles/abstract/variables';
+
+.burger-menu-window {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    border: 1px solid $color-accent;
+    border-radius: $border-radius;
+    min-width: 301px;
+    min-height: 307px;
+    display: grid;
+    place-items: center;
+    background-color: $color-bg;
+    z-index: 1000;
+    transition: right 0.5s ease-in-out;
+
+
+    &-open {
+        right: 0;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-mobile-30;
+        text-align: center;
+    }
+
+}

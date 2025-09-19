@@ -1,0 +1,14 @@
+.bottom-nav {
+    display: flex;
+    justify-content: space-between;
+    // align-items: center;
+    justify-items: center;
+    margin-block-start: 10.5px;
+
+    &__right {
+        display: flex;
+        align-items: center;
+        justify-items: center;
+        gap: 10px;
+    }
+}
