@@ -1,0 +1,23 @@
+@import '../../../../../styles/abstract/mixins';
+@import '../../../../../styles/abstract/variables';
+
+.top-nav-desktop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-block-end: 14.5px;
+
+    &__link {
+        font-size: $font-size-desktop-20;
+    }
+
+    &__menu {
+        display: flex;
+        gap: 0.938rem;
+    }
+
+    @include mobile {
+        display: none;
+    }
+
+}

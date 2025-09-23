@@ -1,9 +1,14 @@
+@import '../../../../styles/abstract/mixins';
 .bottom-nav {
     display: flex;
     justify-content: space-between;
-    // align-items: center;
+    align-items: center;
     justify-items: center;
     margin-block-start: 10.5px;
+
+    @include desktop {
+        margin-block-start: 15.5px;
+    }
 
     &__right {
         display: flex;

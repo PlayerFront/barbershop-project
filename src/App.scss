@@ -1,5 +1,10 @@
 @import '/src/styles/abstract/variables';
+@import '/src/styles/abstract/mixins';
 .App {
     min-height: 100vh;
     padding: $padding-mobile-15 $padding-mobile-29;
+
+    @include desktop {
+        padding: $padding-desktop-48 $padding-desktop-140;
+    }
 }

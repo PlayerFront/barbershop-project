@@ -10,7 +10,7 @@ const BurgerMenuIcon = ({ isOpen, onClick }) => {
             >
         <img
             src={BurgerMenuSvg}
-            alt="Burger menu"
+            alt="Мею сайта"
             className="burger-menu__svg"
         />
         </button >

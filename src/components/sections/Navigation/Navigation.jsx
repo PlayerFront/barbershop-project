@@ -1,11 +1,13 @@
 import './_navigation.scss';
-import TopNav from './TopNav/TopNav';
+import TopNavMobile from './TopNav/TopNavMobile/TopNavMobile';
 import BottomNav from './BottomNav/BottomNav';
+import TopNavDesktop from './TopNav/TopNavDesktop/TopNavDesktop';
 
 const Navigation = () => {
     return (
         <nav className="navigation">
-            <TopNav />
+            <TopNavMobile/>
+            <TopNavDesktop />
             <hr className="navigation__divider" />
             <BottomNav />
         </nav>

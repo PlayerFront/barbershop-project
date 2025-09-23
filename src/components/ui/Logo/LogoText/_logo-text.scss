@@ -1,7 +1,14 @@
+@import '../../../../styles/abstract/mixins';
+
 .logo__text {
 
     &__img {
         width: 134px;
         height: 16px;
+
+        @include desktop {
+            width: 158px;
+            height: 19px;
+        }
     }
 }

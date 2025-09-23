@@ -1,0 +1,11 @@
+@import '../../../../../styles/abstract/mixins';
+.top-nav-mobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-block-end: 9.5px;
+
+    @include desktop {
+        display: none;
+    }
+}

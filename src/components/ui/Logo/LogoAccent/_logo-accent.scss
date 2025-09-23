@@ -1,7 +1,15 @@
+@import '../../../../styles/abstract/mixins';
 .logo__accent {
 
     &-img {
         width: 74px;
         height: 25px;
+
+        @include desktop {
+            width: 100px;
+            height: 33px;
+        }
     }
+
+
 }
