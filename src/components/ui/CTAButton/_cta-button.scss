@@ -1,0 +1,31 @@
+@import '../../../styles/abstract/variables';
+@import '../../../styles/abstract/mixins';
+
+.CTA__button {
+    width: 110px;
+    height: 40px;
+    background-color: $color-accent;
+    padding: 9px 16.5px;
+    border-radius: $border-radius;
+    font-size: $font-size-mobile-16;
+    transition: all 0.3s ease;
+    color: $color-bg;
+    display: flex;
+    align-items: center;
+
+    &:active {
+        background-color: $color-CTAButton-active;
+    }
+
+    @include desktop {
+        width: 142px;
+        height: 48px;
+        padding: 10px 23px;
+        font-size: $font-size-desktop-20;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $color-CTAButton-hover;
+        }
+    }
+}
