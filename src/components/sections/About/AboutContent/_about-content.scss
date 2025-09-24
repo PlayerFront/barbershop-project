@@ -1,0 +1,51 @@
+@import '../../../../styles/abstract/variables';
+@import '../../../../styles/abstract/mixins';
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    @include desktop {
+        flex-direction: row;
+        gap: 15px;
+        flex-wrap: wrap; 
+    }
+
+    &__photo {
+        width: 100%;
+        max-width: 363px;
+        border-radius: $border-radius;
+
+        @include desktop {
+            min-width: 575px;
+            flex-basis: 575px; 
+            flex-grow: 0; 
+            flex-shrink: 0; 
+        }
+    }
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        @include desktop {
+            gap: 15px;
+            flex-basis: 500px; 
+            flex-grow: 1; 
+            flex-shrink: 1; 
+            min-width: 570px; 
+        }
+    }
+
+    &__paragraph {
+        @include card-style;
+        font-size: $font-size-mobile-16;
+
+        @include desktop {
+            font-size: $font-size-desktop-20;
+            flex-grow: 1;
+        }
+    }
+}

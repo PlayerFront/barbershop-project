@@ -30,11 +30,10 @@
     }
 
     @include desktop {
+        min-height: 568px;
         align-items: center;
         margin-block-start: $spacing-desktop-50;
         padding: 0 0 0 30px;
-        background-image: url(../../../assets/images/background/header-background-desktop.webp);
-        background-size: cover;
-        // min-height: 568px;
+        background-image: url('../../../assets/images/background/header-background-desktop.webp');
     }
 }

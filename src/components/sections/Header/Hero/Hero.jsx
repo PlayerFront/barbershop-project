@@ -4,7 +4,7 @@ import './_hero.scss';
 const Hero = () => {
     return (
         <section className="hero">
-            <h1 className="hero__title">ИСКУССТВО СТРИЖКИ ДЛЯ НАСТОЯЩИХ МУЖЧИН В Г. ЧУДОВО</h1>
+            <h1 className="hero__title">ИСКУССТВО СТРИЖКИ <br className="hero__br-desktop" />ДЛЯ НАСТОЯЩИХ МУЖЧИН В Г. ЧУДОВО</h1>
             <p className="hero__guarantee">Гарантия на стрижку 3 дня</p>
             <CTAButton></CTAButton>
         </section>

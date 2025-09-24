@@ -11,6 +11,7 @@
 
     @include desktop {
         margin-block-end:80px;
+        margin-block-start:185px;
     }
 
     &__title {
@@ -20,9 +21,15 @@
 
         @include desktop {
             font-size: $font-size-desktop-48;
-            margin-block-end: $spacing-mobile-30;
-            line-height: 50px;
+            margin-block-end: 30px;
+            line-height: 3.5rem;
+        }
+    }
+    &__br-desktop {
+        display: none;
 
+        @include desktop {
+            display: block;
         }
     }
     &__guarantee {
