@@ -1,4 +1,5 @@
 import './_about.scss';
+import AboutCertificatesMobile from './AboutCertificates/AboutCertificatesMobile/AboutCertificatesMobile';
 import AboutContent from './AboutContent/AboutContent';
 
 const About = () => {
@@ -6,6 +7,7 @@ const About = () => {
         <section className="about" id="about">
             <h2 className="about__title">Обо мне</h2>
             <AboutContent />
+            <AboutCertificatesMobile />
         </section>
     );
 };

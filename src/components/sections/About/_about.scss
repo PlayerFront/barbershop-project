@@ -3,6 +3,9 @@
 
 .about {
     margin-block-start: $spacing-mobile-60;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 
     @include desktop {
         margin-block-start: $spacing-desktop-120;
