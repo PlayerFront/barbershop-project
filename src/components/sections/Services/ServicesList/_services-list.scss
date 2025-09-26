@@ -1,0 +1,12 @@
+@import '../../../../styles/abstract/variables';
+@import '../../../../styles/abstract/mixins';
+
+.services-list {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-mobile-10;
+
+    @include desktop{
+        gap: $spacing-desktop-15;
+    }
+}

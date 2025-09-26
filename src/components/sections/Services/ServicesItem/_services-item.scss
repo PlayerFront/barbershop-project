@@ -1,0 +1,18 @@
+@import '../../../../styles/abstract/variables';
+@import '../../../../styles/abstract/mixins';
+
+.services-item {
+    @include card-style;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: $font-size-mobile-16;
+
+    @include desktop {
+        font-size: $font-size-desktop-20;
+    }
+
+    &__name {
+        width: 70%;
+    }
+}

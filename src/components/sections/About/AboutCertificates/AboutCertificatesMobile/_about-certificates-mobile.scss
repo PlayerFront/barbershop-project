@@ -3,36 +3,26 @@
 
 .about-certificates-mobile {
     position: relative;
+    border-radius: $border-radius;
     display: flex;
     flex-direction: column;
     gap: 21px;
     align-items: center;
 
-    &__carousel {
-        overflow: hidden;
-        border-radius: $border-radius;
-    }
-
-    &__track {
-        display: flex;
-        transition: transform 1s ease-in-out;
-        margin: 0 -7.5px;
-    }
-
-    &__slide {
-        flex: 0 0 calc(100% - 15px);
-        min-width: calc(100% - 15px);
-        margin: 0 7.5px;
+    &__swiper {
+        width: 100%;
     }
 
     &__image {
-        width: 100%;
-        height: auto;
-        display: block;
         border-radius: $border-radius;
     }
+
     &__controls {
         display: flex;
         gap: 150px;
+    }
+
+    @include desktop {
+        display: none;
     }
 }

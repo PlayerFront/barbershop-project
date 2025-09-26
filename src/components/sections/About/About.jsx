@@ -1,4 +1,5 @@
 import './_about.scss';
+import AboutCertificatesDesktop from './AboutCertificates/AboutCertificatesDesktop/AboutCertificatesDesktop';
 import AboutCertificatesMobile from './AboutCertificates/AboutCertificatesMobile/AboutCertificatesMobile';
 import AboutContent from './AboutContent/AboutContent';
 
@@ -8,6 +9,7 @@ const About = () => {
             <h2 className="about__title">Обо мне</h2>
             <AboutContent />
             <AboutCertificatesMobile />
+            <AboutCertificatesDesktop />
         </section>
     );
 };

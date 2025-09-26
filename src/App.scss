@@ -3,7 +3,7 @@
 
 .App {
     min-height: 100vh;
-    padding: $padding-mobile-15 $padding-mobile-29;
+    padding: $padding-mobile-29 $padding-mobile-15 ;
     width: 100%;
 
     @include desktop {

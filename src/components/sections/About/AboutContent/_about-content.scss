@@ -8,17 +8,19 @@
 
     @include desktop {
         flex-direction: row;
+        justify-items: center;
         gap: 15px;
         flex-wrap: wrap; 
     }
 
     &__photo {
         width: 100%;
-        max-width: 363px;
+        min-width: 363px;
         border-radius: $border-radius;
+        justify-self: center;
 
         @include desktop {
-            min-width: 575px;
+            max-width: 575px;
             flex-basis: 575px; 
             flex-grow: 0; 
             flex-shrink: 0; 
