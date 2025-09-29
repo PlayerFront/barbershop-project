@@ -1,7 +1,6 @@
 @import '../../../../../styles/abstract/variables';
 @import '../../../../../styles/abstract/mixins';
 
-
 .about-certificates-desktop {
     display: flex;
     flex-wrap: wrap;
@@ -9,10 +8,14 @@
     gap: 15px;
 
     &__item {
-        max-width: 280px;
+        flex: 1 1 280px;
+        max-width: 390px;
+        min-width: 280px;
     }
     &__image {
         border-radius: $border-radius;
+        width: 100%;
+        height: auto;
     }
 
     @include mobile {
