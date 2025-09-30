@@ -1,7 +1,7 @@
 @import '../../../styles/abstract/variables';
 @import '../../../styles/abstract/mixins';
 
-.services {
+.cosmetics {
     margin-block-start: $spacing-mobile-60;
     display: flex;
     flex-direction: column;
@@ -12,7 +12,25 @@
         gap: $spacing-desktop-60;
     }
 
+    &__container {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-mobile-10;
+
+        @include desktop {
+            gap: $spacing-desktop-15;
+        }
+    }
+
     &__title {
         @include section-title;
+    }
+
+    &__description {
+        @include card-style;
+
+        p {
+            font-size: $font-size-desktop-20;
+        }
     }
 }

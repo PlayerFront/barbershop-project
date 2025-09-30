@@ -7,9 +7,11 @@ const About = () => {
     return (
         <section className="about" id="about">
             <h2 className="about__title">Обо мне</h2>
-            <AboutContent />
-            <AboutCertificatesMobile />
-            <AboutCertificatesDesktop />
+            <div className="about__container">
+                <AboutContent />
+                <AboutCertificatesMobile />
+                <AboutCertificatesDesktop />
+            </div>
         </section>
     );
 };

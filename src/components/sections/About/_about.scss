@@ -5,24 +5,24 @@
     margin-block-start: $spacing-mobile-60;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: $spacing-mobile-30;
 
     @include desktop {
         margin-block-start: $spacing-desktop-120;
-        gap: 15px;
+        gap: $spacing-desktop-60
     }
 
     &__title {
-        text-align: center;
-        color: $color-accent;
-        font-size: $font-size-mobile-20;
-        font-weight: $font-weight-reg;
-        margin-block-end: $spacing-mobile-30;
-
-        @include desktop {
-            font-size: $font-size-desktop-32;
-            margin-block-end: $spacing-desktop-60;
-        }
+        @include section-title;
     }
 
+    &__container {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-mobile-10;
+
+        @include desktop {
+            gap: $spacing-desktop-15;
+        }
+    }
 }

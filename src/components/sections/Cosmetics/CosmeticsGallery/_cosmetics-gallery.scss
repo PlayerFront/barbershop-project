@@ -1,0 +1,48 @@
+@import '../../../../styles/abstract/variables';
+@import '../../../../styles/abstract/mixins';
+
+.cosmetics-gallery {
+    position: relative;
+    display: block;
+    text-align: center;
+
+    @include desktop {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 5px;
+    }
+
+    &__swiper {
+        width: 100%;
+        border-radius: $border-radius;
+
+        @include desktop {
+            order: 2;
+            flex: 1;
+        }
+    }
+
+    &__image {
+        border-radius: $border-radius;
+        width: 100%;
+        height: auto;
+    }
+}
+
+.carousel-button--prev {
+    @include mobile {
+        margin-block-start: $spacing-mobile-20;
+        margin-right: 150px;
+    }
+
+    @include desktop {
+        order: 1;
+    }
+}
+
+.carousel-button--next {
+    @include desktop {
+        order: 3;
+    }
+}
