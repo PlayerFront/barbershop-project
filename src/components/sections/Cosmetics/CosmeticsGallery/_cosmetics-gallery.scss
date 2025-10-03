@@ -10,7 +10,6 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 5px;
     }
 
     &__swiper {
@@ -37,12 +36,18 @@
     }
 
     @include desktop {
-        order: 1;
+        position: absolute;
+        left: -20px;
+        top: 50%;
+        transform: translateY(-50%);
     }
 }
 
 .carousel-button--next {
     @include desktop {
-        order: 3;
+        position: absolute;
+        right: -20px;
+        top: 50%;
+        transform: translateY(-50%);
     }
 }

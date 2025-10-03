@@ -5,6 +5,7 @@ import Header from './components/sections/Header/Header';
 import About from './components/sections/About/About';
 import Services from './components/sections/Services/Services';
 import Cosmetics from './components/sections/Cosmetics/Cosmetics';
+import Reviews from './components/sections/Reviews/Reviews';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
             <About />
             <Services />
             <Cosmetics />
+            <Reviews />
         </div>
     )
 }
