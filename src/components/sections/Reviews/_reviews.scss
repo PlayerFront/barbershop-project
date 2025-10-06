@@ -5,7 +5,7 @@
     margin-block-start: $spacing-mobile-60;
     display: flex;
     flex-direction: column;
-    gap: $spacing-mobile-60;
+    gap: $spacing-mobile-30;
 
     @include desktop {
         margin-block-start: $spacing-desktop-120;
@@ -127,11 +127,6 @@
     &__stars {
         display: flex;
         gap: 8.44px;
-    }
-
-    &__star {
-        // height: 16px;
-        // width: 17px; //проверить достоверность
     }
 
     &__author {

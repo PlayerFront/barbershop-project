@@ -75,7 +75,8 @@ const Reviews = () => {
                     ))}
                 </div>
                 <p className="reviews__link">Посмотреть все отзывы можно {' '}
-                    <a href="https://t.me/estokoshko_bot/app?startapp=client9111" target="_blank" rel="noopener noreferrer">здесь</a>
+                    <a href="https://t.me/estokoshko_bot/app?startapp=client9111" target="_blank" rel="noopener noreferrer">здесь</a> 
+                    {/* Вопрос со ссылкой https://yandex.ru/maps/org/k53/244689515649/reviews */}
                 </p>
             </div>
         </section>

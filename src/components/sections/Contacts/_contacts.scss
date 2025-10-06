@@ -1,0 +1,83 @@
+@import '../../../styles/abstract/variables';
+@import '../../../styles/abstract/mixins';
+
+.contacts {
+    margin-block-start: $spacing-mobile-60;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-mobile-30;
+
+    @include desktop {
+        margin-block-start: $spacing-desktop-120;
+        gap: $spacing-desktop-60;
+    }
+
+    &__title {
+        @include section-title;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-mobile-10;
+
+        @include desktop {
+            flex-direction: row;
+            gap: $spacing-desktop-15;
+        }
+    }
+
+    &__info {
+        padding: $spacing-mobile-10;
+        display: flex;
+        align-items: center;
+
+        @include desktop {
+            flex: 0 0 50%;
+            width: 50%;
+        }
+    }
+
+    &__list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: $spacing-mobile-10;
+
+        @include desktop {
+            gap: $spacing-desktop-15;
+        }
+    }
+
+    &__map {
+        width: 100%;
+
+        @include desktop {
+            flex: 0 0 50%;
+            width: 50%;
+            display: flex;
+            overflow: hidden;
+            min-width: 0;
+        }
+
+        &-iframe {
+            width: 100%;
+            border-radius: $border-radius;
+
+            @include mobile {
+                height: 234px;
+            }
+        }
+    }
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: $spacing-mobile-10;
+    font-size: $font-size-mobile-16;
+
+    @include desktop {
+        font-size: $font-size-mobile-20;
+    }
+}
