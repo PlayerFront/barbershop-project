@@ -34,7 +34,6 @@
 
         @include desktop {
             flex: 0 0 50%;
-            width: 50%;
         }
     }
 
@@ -53,20 +52,19 @@
         width: 100%;
 
         @include desktop {
-            flex: 0 0 50%;
-            width: 50%;
             display: flex;
             overflow: hidden;
             min-width: 0;
+            flex: 1;
         }
+    }
 
-        &-iframe {
-            width: 100%;
-            border-radius: $border-radius;
-
-            @include mobile {
-                height: 234px;
-            }
+    &__map-iframe {
+        border-radius: $border-radius;
+        height: 234px;
+        width: 100%;
+        @include desktop {
+            height: 370px;
         }
     }
 }

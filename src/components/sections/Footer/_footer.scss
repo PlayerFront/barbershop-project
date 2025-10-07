@@ -1,0 +1,63 @@
+@import '../../../styles/abstract/variables';
+@import '../../../styles/abstract/mixins';
+
+.footer {
+    border-top: 1px solid $color-accent;
+    margin-block-start: $spacing-mobile-60;
+    padding-top: $spacing-mobile-10;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    align-items: center;
+    font-size: $font-size-mobile-14;
+
+    @include desktop {
+        margin-block-start: $spacing-desktop-120;
+        padding-top: $spacing-desktop-15;
+        font-size: $font-size-desktop-16;
+        gap: 10px;
+        align-items: flex-start;
+    }
+
+    &__flex {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        width: 100%;
+
+        @include desktop {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: stretch;
+            flex-wrap: wrap;
+            min-height: 150px;
+        }
+    }
+
+    &__header {
+        @include desktop {
+            align-items: flex-start !important;
+        }
+    }
+
+    &__copyright {
+        @include desktop {
+            margin-block-start: 78px;   //костыль
+        }
+    }
+
+    &__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: $spacing-mobile-10;
+
+        @include desktop {
+            height: 100%;
+        }
+    }
+
+    &__development a {
+        color: $color-accent;
+    }
+}

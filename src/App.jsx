@@ -7,6 +7,7 @@ import Services from './components/sections/Services/Services';
 import Cosmetics from './components/sections/Cosmetics/Cosmetics';
 import Reviews from './components/sections/Reviews/Reviews';
 import Contacts from './components/sections/Contacts/Contacts';
+import Footer from './components/sections/Footer/Footer';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
             <Cosmetics />
             <Reviews />
             <Contacts />
+            <Footer />
         </div>
     )
 }
