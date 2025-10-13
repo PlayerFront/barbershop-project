@@ -8,6 +8,7 @@ import Cosmetics from './components/sections/Cosmetics/Cosmetics';
 import Reviews from './components/sections/Reviews/Reviews';
 import Contacts from './components/sections/Contacts/Contacts';
 import Footer from './components/sections/Footer/Footer';
+import CookiesBanner from './components/common/CookiesBanner/CookiesBanner';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
             <Reviews />
             <Contacts />
             <Footer />
+            <CookiesBanner />
         </div>
     )
 }

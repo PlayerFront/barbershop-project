@@ -1,0 +1,62 @@
+@import '../../../styles/abstract/variables';
+@import '../../../styles/abstract/mixins';
+
+.cookies-banner {
+    @include accent-border;
+    position: fixed;
+    bottom: 0;
+    right: -100%;
+    background: $color-bg;
+    padding: 35px 28px 37px 23px;
+    z-index: 2000;
+    max-width: 510px;
+    transition: right 0.4s ease-in-out, transform 0.4s ease-in-out;
+    @include mobile {
+        max-width: 90vw;
+        right: 0;
+        transform: translateX(100%);
+    }
+    @include desktop {
+        padding: 35px 51px 26px 50px;
+    }
+    &-visible {
+        right: 0px;
+
+        @include mobile {
+            right: 0px;
+            transform: translateX(0);
+        }
+    }
+    &-hidden {
+        right: -100%;
+
+        @include mobile {
+            right: 0px;
+            transform: translateX(100%);
+        }
+    }
+    &__content {
+        display: flex;
+        flex-direction: column;
+        gap: 26px;
+        @include desktop {
+            gap: 30px;
+        }
+    }
+
+    &__title {
+        font-size: $font-size-mobile-20;
+        font-weight: $font-weight-reg;
+        text-align: center;
+    }
+
+    &__text {
+        font-size: $font-size-mobile-16;
+    }
+
+    &__buttons {
+        display: flex;
+        gap: 35px;
+        justify-content: center;
+    }
+}

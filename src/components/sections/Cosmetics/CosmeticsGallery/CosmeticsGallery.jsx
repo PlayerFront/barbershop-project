@@ -24,7 +24,7 @@ const CosmeticsGallery = () => {
                 modules={[Navigation]}
                 loop={true}
                 spaceBetween={15}
-                speed={1000}
+                speed={400}
                 navigation={{
                     nextEl: '.cosmetics-gallery__btn--next',
                     prevEl: '.cosmetics-gallery__btn--prev',

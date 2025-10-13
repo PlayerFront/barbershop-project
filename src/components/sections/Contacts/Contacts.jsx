@@ -60,7 +60,7 @@ const Contacts = () => {
                     <iframe
                         src="https://yandex.ru/map-widget/v1/org/k53/244689515649/?azimuth=0.11786613279784912&ll=31.662464%2C59.122517&z=16.97"
                         frameBorder="0"
-                        allowfullscreen="true"
+                        allowFullScreen={true}
                         title="местоположение барбершопа к53"
                         className="contacts__map-iframe"
                     />

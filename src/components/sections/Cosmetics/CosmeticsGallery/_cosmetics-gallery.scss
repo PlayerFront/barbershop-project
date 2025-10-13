@@ -27,27 +27,27 @@
         width: 100%;
         height: auto;
     }
-}
 
-.carousel-button--prev {
-    @include mobile {
-        margin-block-start: $spacing-mobile-20;
-        margin-right: 150px;
+    .carousel-button--prev {
+        @include mobile {
+            margin-block-start: $spacing-mobile-20;
+            margin-right: 150px;
+        }
+
+        @include desktop {
+            position: absolute;
+            left: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
     }
 
-    @include desktop {
-        position: absolute;
-        left: -20px;
-        top: 50%;
-        transform: translateY(-50%);
-    }
-}
-
-.carousel-button--next {
-    @include desktop {
-        position: absolute;
-        right: -20px;
-        top: 50%;
-        transform: translateY(-50%);
+    .carousel-button--next {
+        @include desktop {
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
     }
 }

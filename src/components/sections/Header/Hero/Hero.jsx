@@ -1,4 +1,4 @@
-import CTAButton from '../../../ui/CTAButton/CTAButton';
+import Button from '../../../ui/Button/Button';
 import './_hero.scss';
 
 const Hero = () => {
@@ -6,7 +6,14 @@ const Hero = () => {
         <section className="hero">
             <h1 className="hero__title">ИСКУССТВО СТРИЖКИ <br className="hero__br-desktop" />ДЛЯ НАСТОЯЩИХ МУЖЧИН В Г. ЧУДОВО</h1>
             <p className="hero__guarantee">Гарантия на стрижку 3 дня</p>
-            <CTAButton></CTAButton>
+            <Button
+                variant='accent'
+                size='large'
+                href="https://b.estokoshko.ru/m/CM9JYUW"
+                external={true}
+            >
+                Записаться
+            </Button>
         </section>
     );
 };

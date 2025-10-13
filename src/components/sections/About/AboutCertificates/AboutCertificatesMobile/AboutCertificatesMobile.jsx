@@ -24,7 +24,7 @@ const AboutCertificatesMobile = () => {
                 modules={[Navigation]}
                 spaceBetween={15}
                 loop={true}
-                speed={1000}
+                speed={400} // Задать скорость всем анимациям
                 slidesPerView={1}
                 navigation={{
                     nextEl: '.about-certificates-mobile__btn--next',

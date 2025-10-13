@@ -1,0 +1,60 @@
+@import '../../../styles/abstract/variables';
+@import '../../../styles/abstract/mixins';
+
+.button {
+    @include accent-border;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+
+    &--accent {
+        background-color: $color-accent;
+        color: $color-bg;
+
+        &:hover {
+            background-color: $color-AccentButton-hover;
+        }
+
+        &:active {
+            background-color: $color-AccentButton-active;
+        }
+    }
+
+    &--bg {
+        background-color: $color-bg;
+        color: $color-accent;
+
+        &:hover {
+            background-color: $color-BgButton-hover;
+        }
+
+        &:active {
+            background-color: $color-BgButton-active;
+        }
+    }
+
+    &--large {
+        padding: 9px 16.5px;
+        font-size: $font-size-mobile-16;
+        width: 110px;
+        height: 40px;
+
+        @include desktop {
+            padding: 10px 23px;
+            font-size: $font-size-desktop-20;
+            width: 142px;
+            height: 48px;
+        }
+    }
+
+    &--small {
+        padding: 9px 13.5px;
+        font-size: $font-size-mobile-16;
+
+        @include desktop {
+            padding: 10px 15px;
+            font-size: $font-size-desktop-16;
+        }
+    }
+}
