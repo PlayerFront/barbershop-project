@@ -33,8 +33,8 @@ src/
 
 ## Screenshots
 
-![Desktop View] (/screenshots/desktop.png)
-![Mobile View] (/screenshots/mobile.png)
+![Desktop View](/screenshots/desktop.png)
+![Mobile View](/screenshots/mobile.png)
 
 ## Live Preview
 
