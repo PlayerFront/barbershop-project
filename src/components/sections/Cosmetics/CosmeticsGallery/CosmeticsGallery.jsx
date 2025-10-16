@@ -13,10 +13,21 @@ const CosmeticsGallery = () => {
         query: '?url'
     })).map(item => item.default)
         .sort((a, b) => {
-            const numA = parseInt(a.match(/brand-product-(\d+)\.webp$/)[1]);
-            const numB = parseInt(b.match(/brand-product-(\d+)\.webp$/)[1]);
-            return numA - numB;
+            const getNumber = (path) => {
+                const match = path.match(/brand-product-(\d+)/);
+                if (!match) {
+                    console.warn('Invalid filename:', path);
+                    return 0;
+                }
+                return parseInt(match[1]);
+            }
+            return getNumber(a) - getNumber(b);
         });
+    // .sort((a, b) => {
+    //     const numA = parseInt(a.match(/brand-product-(\d+)\.webp$/)[1]);
+    //     const numB = parseInt(b.match(/brand-product-(\d+)\.webp$/)[1]);
+    //     return numA - numB;
+    // });
 
     return (
         <div className="cosmetics-gallery">
