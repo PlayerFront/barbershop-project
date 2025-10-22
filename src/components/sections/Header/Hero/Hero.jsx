@@ -9,7 +9,7 @@ const Hero = () => {
             <Button
                 variant='accent'
                 size='large'
-                href="https://b.estokoshko.ru/m/CM9JYUW"
+                href="https://n1763817.yclients.com/"
                 external={true}
             >
                 Записаться

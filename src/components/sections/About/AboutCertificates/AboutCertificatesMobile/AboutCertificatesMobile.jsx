@@ -34,7 +34,12 @@ const AboutCertificatesMobile = () => {
             >
                 {certificates.map((cert, index) => (
                     <SwiperSlide key={index}>
-                        <img src={cert} alt={`Сертификат ${index + 1}`} className="about-certificates-mobile__image" />
+                        <img
+                            src={cert}
+                            alt={`Сертификат ${index + 1}`}
+                            className="about-certificates-mobile__image"
+                            loading="lazy"
+                        />
                     </SwiperSlide>
                 ))}
             </Swiper>

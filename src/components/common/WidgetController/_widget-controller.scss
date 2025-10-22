@@ -1,0 +1,15 @@
+@import '../../../styles/abstract/variables';
+
+.yButtonBackground {
+    background-color: $color-accent !important;
+    border-color: $color-accent !important;
+    font-family: $font-main !important;
+
+}
+
+.yButtonText {
+    font-family: $font-main !important;
+    font-size: $font-size-base-desktop !important;
+    color: $color-bg !important;
+    font-weight: 400 !important;
+}

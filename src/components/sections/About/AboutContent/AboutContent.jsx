@@ -14,6 +14,7 @@ const AboutContent = () => {
                     src={AboutPhotoMobile}
                     alt="Фото барбера Комисова Игоря"
                     className="about-content__photo"
+                    loading="lazy"
                 />
             </picture>
             <div className="about-content__text">

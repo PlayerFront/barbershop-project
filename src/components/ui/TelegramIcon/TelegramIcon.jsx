@@ -1,10 +1,10 @@
 import './_telegram-icon.scss';
-import TelegramSvg from '../../../assets/icons/telegram-icon.svg';
+import TelegramSvg from '../../../assets/icons/telegram-icon.svg'; // ПОМЕНЯТЬ ВСЕ
 
 const TelegramIcon = () => {
     return (
         <a
-            href="https://b.estokoshko.ru/m/CM9JYUW"
+            href="https://n1763817.yclients.com/"
             target="_blank"
             rel="noopener noreferrer"
         >

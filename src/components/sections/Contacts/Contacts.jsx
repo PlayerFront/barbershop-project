@@ -8,7 +8,7 @@ const Contacts = () => {
     const contactsData = {
         phone: '8 (996) 939-99-02',
         vk: 'https://vk.com/publickom1sx53',
-        telegram: 'https://b.estokoshko.ru/m/CM9JYUW',
+        telegram: 'https://n1763817.yclients.com/', // поменять телегу
         adress: 'Новгородская обл., г. Чудово, ул. Титова, д.14, к.2, кв.19'
     };
 
@@ -34,12 +34,12 @@ const Contacts = () => {
                             </a>
                         </li>
                         <li className="contact-item">
-                            <TelegramIcon className="contact-item__icon" />
+                            <TelegramIcon className="contact-item__icon" /> {/*Поменять иконку телеги */}
                             <a
-                                href={contactsData.telegram}
+                                href={contactsData.telegram} // поменять телегу
                                 target="_blank"
                                 rel="noopener noreferrer">
-                                https://b.estokoshko.ru/m/CM9JYUW
+                                https://n1763817.yclients.com/
                             </a>
                         </li>
                         <li className="contact-item">

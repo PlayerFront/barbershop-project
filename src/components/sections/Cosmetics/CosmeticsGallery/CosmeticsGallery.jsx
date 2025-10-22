@@ -23,12 +23,7 @@ const CosmeticsGallery = () => {
             }
             return getNumber(a) - getNumber(b);
         });
-    // .sort((a, b) => {
-    //     const numA = parseInt(a.match(/brand-product-(\d+)\.webp$/)[1]);
-    //     const numB = parseInt(b.match(/brand-product-(\d+)\.webp$/)[1]);
-    //     return numA - numB;
-    // });
-
+        
     return (
         <div className="cosmetics-gallery">
             <Swiper
@@ -52,7 +47,12 @@ const CosmeticsGallery = () => {
             >
                 {cosmeticsImages.map((img, index) => (
                     <SwiperSlide key={index}>
-                        <img src={img} alt={`Косметика ${index + 1}`} className="cosmetics-gallery__image" />
+                        <img
+                            src={img}
+                            alt={`Косметика ${index + 1}`}
+                            className="cosmetics-gallery__image"
+                            loading="lazy"
+                        />
                     </SwiperSlide>
                 ))}
             </Swiper>

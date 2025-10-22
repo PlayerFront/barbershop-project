@@ -18,6 +18,7 @@ const AboutCertificatesDesktop = () => {
                         src={cert}
                         alt={`Сертификат ${index + 1}`}
                         className="about-certificates-desktop__image"
+                        loading="lazy"
                     />
                 </div>
             ))}
