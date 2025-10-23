@@ -1,62 +1,89 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import './_widget-controller.scss';
 
 const WidgetController = () => {
     const [isVisible, setIsVisible] = useState(false);
+    const [widgetReady, setWidgetReady] = useState(false);
+    const [cookiesAccepted, setCookiesAccepted] = useState(true); // тут пока true
 
-    // появление при скролле
+    useEffect(() => {
+        const checkCookiesStatus = () => {
+            const cookiesAccepted = localStorage.getItem('cookies-accepted');
+            setCookiesAccepted(cookiesAccepted && cookiesAccepted !== 'none');
+        };
+
+        const checkWidget = () => {
+            if (window.yWidget) {
+                setWidgetReady(true);
+            }
+        };
+
+        checkCookiesStatus();
+        checkWidget();
+
+        const handleStorageChange = () => {
+            checkCookiesStatus();
+        };
+
+        const widgetInterval = setInterval(() => {
+            checkWidget();
+            if (window.ywidget) clearInterval(widgetInterval);
+        }, 500);
+
+        window.addEventListener('storage', handleStorageChange);
+
+        setTimeout(() => clearInterval(widgetInterval), 1000);
+
+        return () => {
+            clearInterval(widgetInterval);
+            window.removeEventListener('storage', handleStorageChange);
+        };
+    }, []);
+
     useEffect(() => {
         const handleScroll = () => {
             const header = document.querySelector('.header');
+
             if (header) {
-                const headerHeight = header.offsetHeight;
+                const headerHeight =  header.offsetHeight;
                 setIsVisible(window.scrollY > headerHeight);
             }
         };
 
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, [isVisible]);
+        let scrollTimeOut;
+        const debouncedScroll = () => {
+            clearTimeout(scrollTimeOut);
+            scrollTimeOut = setTimeout(handleScroll, 10);
+        };
 
-    // стили кнопки "Онлайн-запись"
-    useEffect(() => {
-        const applyWidgetStyles = () => {
-            const widgetBg = document.querySelector('.yButtonBackground');
-            if (widgetBg) {
-                widgetBg.style.background = '#00EAF';
-            }
+        window.addEventListener('scroll', debouncedScroll, {passive: true});
+        handleScroll();
 
-            const widgetText = document.querySelector('.yButtonText');
-            if (widgetText) {
-                widgetText.style.fontFamily = 'Roboto Condensed, sans-serif';
-                widgetText.style.fontSize = '16px';
-                widgetText.style.color = '#2C2C2C';
-                widgetText.style.fontWeight = '400';
-            }
+        return () => {
+            window.removeEventListener('scroll', debouncedScroll);
+            clearTimeout(scrollTimeOut);
         }
+    }, []);
 
-        // видимость кнопки
-        const widgetButton = document.querySelector('.yButton');
-        if (widgetButton) {
-            widgetButton.style.opacity = isVisible ? '1' : '0';
-            widgetButton.style.pointerEvents = isVisible ? 'auto' : 'none';
-            widgetButton.style.transition = 'right 0.4s ease-in-out, transform 0.4s ease-in-out';
-
-            if (isVisible) {
-                widgetButton.style.transform = 'translateX(0)';
-            } else {
-                widgetButton.style.transform = 'translateX(100%)';
-            }
+    const handleBookingClick = () => {
+        if (window.yWidget && window.yWidget.href) {
+            window.yWidget.show(window.yWidget.href);
         }
+    };
 
-        applyWidgetStyles();
-
-        const timers = [
-            setTimeout(applyWidgetStyles, 1000),
-            setTimeout(applyWidgetStyles, 3000)
-        ];
-
-        return () => timers.forEach(timer => clearTimeout(timer));
-    }, [isVisible]);
+    if (!widgetReady || !cookiesAccepted) {
+        return null;
+    }
+// || !isVisible
+    return (
+        <button
+            className={`custom-booking-button ${isVisible ? 'button-visible' : 'button-hidden'}`}
+            onClick={handleBookingClick}
+            aria-label="Онлайн-запись"
+        >
+            <span className="custom-booking-button__text">Онлайн<br />запись</span>
+        </button>
+    )
 }
+
 export default WidgetController;

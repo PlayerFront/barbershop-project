@@ -2,7 +2,7 @@ import { useState } from 'react';
 import LogoAccent from '../../ui/Logo/LogoAccent/LogoAccent';
 import LogoFooter from '../../ui/LogoFooter/LogoFooter';
 import PhoneIcon from '../../ui/PhoneIcon/PhoneIcon';
-import TelegramIcon from '../../ui/TelegramIcon/TelegramIcon';
+import YClientsIcon from '../../ui/YClientsIcon/YClientsIcon';
 import VkIcon from '../../ui/VkIcon/VkIcon';
 import './_footer.scss';
 import Modal from '../../common/Modal/Modal';
@@ -21,8 +21,6 @@ const Footer = () => {
                     <p className="footer__copyright">© 2025</p>
                 </div>
                 <div className="footer__cookies footer__container">
-                    {/* <p className="footer__text">Cookies</p>
-                    <p className="footer__text">Политика конфиденциальности</p> */}
                     <button
                         className='footer__link'
                         onClick={() => setModalType('cookies')}
@@ -45,7 +43,7 @@ const Footer = () => {
                 </div>
                 <div className="footer__social footer__container">
                     <PhoneIcon className="footer__icon" />
-                    <TelegramIcon className="footer__icon" />
+                    <YClientsIcon className="footer__icon" />
                     <VkIcon className="footer__icon" />
                 </div>
             </div>
