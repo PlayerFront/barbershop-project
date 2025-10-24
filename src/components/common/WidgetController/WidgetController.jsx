@@ -9,34 +9,33 @@ const WidgetController = () => {
     useEffect(() => {
         const checkCookiesStatus = () => {
             const cookiesAccepted = localStorage.getItem('cookies-accepted');
-            setCookiesAccepted(cookiesAccepted && cookiesAccepted !== 'none');
+            const hasSeenBanner = cookiesAccepted !== null;
+            setCookiesAccepted(hasSeenBanner);
         };
 
         const checkWidget = () => {
-            if (window.yWidget) {
+            if (window.yWidget || window.ywidget) {
                 setWidgetReady(true);
+                return true;
             }
+            return false;
         };
+        const handleEvent = () => checkCookiesStatus();
+
 
         checkCookiesStatus();
-        checkWidget();
 
-        const handleStorageChange = () => {
-            checkCookiesStatus();
-        };
+        const widgetTimer = setTimeout(() => setWidgetReady(true), 3000);
+        if (checkWidget()) clearTimeout(widgetTimer);
 
-        const widgetInterval = setInterval(() => {
-            checkWidget();
-            if (window.ywidget) clearInterval(widgetInterval);
-        }, 500);
+        window.addEventListener('storage', handleEvent);
+        window.addEventListener('cookiesChanged', handleEvent);
 
-        window.addEventListener('storage', handleStorageChange);
-
-        setTimeout(() => clearInterval(widgetInterval), 1000);
 
         return () => {
-            clearInterval(widgetInterval);
-            window.removeEventListener('storage', handleStorageChange);
+            clearTimeout(widgetTimer);
+            window.removeEventListener('storage', handleEvent);
+            window.removeEventListener('cookiesChanged', handleEvent);
         };
     }, []);
 
@@ -45,7 +44,7 @@ const WidgetController = () => {
             const header = document.querySelector('.header');
 
             if (header) {
-                const headerHeight =  header.offsetHeight;
+                const headerHeight = header.offsetHeight;
                 setIsVisible(window.scrollY > headerHeight);
             }
         };
@@ -56,7 +55,7 @@ const WidgetController = () => {
             scrollTimeOut = setTimeout(handleScroll, 10);
         };
 
-        window.addEventListener('scroll', debouncedScroll, {passive: true});
+        window.addEventListener('scroll', debouncedScroll, { passive: true });
         handleScroll();
 
         return () => {
@@ -74,7 +73,6 @@ const WidgetController = () => {
     if (!widgetReady || !cookiesAccepted) {
         return null;
     }
-// || !isVisible
     return (
         <button
             className={`custom-booking-button ${isVisible ? 'button-visible' : 'button-hidden'}`}

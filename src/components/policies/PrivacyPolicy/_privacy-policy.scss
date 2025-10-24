@@ -1,0 +1,12 @@
+@import '../../../styles/abstract/variables';
+@import '../../../styles/abstract/mixins';
+
+.privacy-policy {
+    line-height: 1.6;
+    padding: 20px;
+
+    h2 {
+        font-size: $font-size-desktop-20;
+    }
+
+}

@@ -15,10 +15,16 @@ const CookiesBanner = () => {
     const acceptAll = () => {
         localStorage.setItem('cookies-accepted', 'all');
         setIsVisible(false);
+        window.dispatchEvent(new Event('cookiesChanged'));
+        console.log('Dispatching cookiesChanged event');
+        window.dispatchEvent(new CustomEvent('cookiesChanged', {
+            detail: { key: 'cookies-accepted', value: 'all' }
+        }));
     }
     const relectAll = () => {
         localStorage.setItem('cookies-accepted', 'none');
         setIsVisible(false);
+        window.dispatchEvent(new Event('cookiesChanged'));
     }
 
     return (
@@ -27,7 +33,7 @@ const CookiesBanner = () => {
                 <h3 className='cookies-banner__title'>Мы используем файлы cookie</h3>
                 <p className='cookies-banner__text'>Мы используем cookies для улучшения работы сайта. Продолжая использовать сайт, вы соглашаетесь с этим. </p>
                 <div className='cookies-banner__buttons'>
-                    <Button 
+                    <Button
                         variant='accent'
                         size='small'
                         onClick={acceptAll}

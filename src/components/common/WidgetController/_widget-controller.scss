@@ -16,6 +16,10 @@
     background-color: $color-accent;
     color: $color-bg;
     opacity: 0.8;
+    opacity: 0;
+    transform: translateX(100%);
+    visibility: hidden;
+    transition: all 0.4s ease-in-out;
 
     &:hover {
         background-color: $color-AccentButton-hover;

@@ -21,6 +21,7 @@
     }
     &-visible {
         right: 0px;
+        visibility: visible;
 
         @include mobile {
             right: 0px;
@@ -29,6 +30,7 @@
     }
     &-hidden {
         right: -100%;
+        visibility: hidden;
 
         @include mobile {
             right: 0px;
