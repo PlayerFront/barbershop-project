@@ -15,7 +15,7 @@
     }
 
     &__intro {
-        margin-bottom: 30px;
+        margin-bottom: 35px;
 
         p {
             margin-bottom: 15px;
@@ -40,7 +40,7 @@
 
     &__subtitle {
         font-size: 18px;
-        margin: 25px 0 15px 0;
+        margin-bottom: 15px;
         color: $color-font;
     }
 
@@ -95,13 +95,12 @@
         &__purpose {
             margin: 0;
             font-style: italic;
-            margin-bottom: 15px;
+
         }
-        &__examples {
+        &__examples {         
             display: flex;
             flex-direction: column;
             gap: 8px;
-            margin-bottom: 15px;
             font-size: $font-size-mobile-14;
         }
     }

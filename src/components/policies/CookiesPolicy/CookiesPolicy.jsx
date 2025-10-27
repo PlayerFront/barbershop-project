@@ -62,14 +62,14 @@ const CookiesPolicy = () => {
                         </div>
                         <p className="cookie-type__purpose">Эти Cookies позволяют нам запоминать ваш выбор при использовании Веб-сайта, чтобы предоставить более персонализированный опыт.</p>
                     </div>
-                    <div className="cookie-type cookie-type--new">
+                    <div className="cookie-type">
                         <h4 className="cookie-type__title">Cookies сервиса онлайн-записи</h4>
                         <div className="cookie-type__details">
                             <span><strong>Тип:</strong> Постоянные и Сессионные Cookies</span>
                             <span><strong>Администрируется:</strong> YCLIENTS</span>
                         </div>
-                        <p className="cookie-type__purpose">Эти Cookies используются для работы виджета онлайн-записи и могут включать:</p>
-                        <div className="cookie-examples">
+                        <p className="cookie-type__purpose">Эти Cookies используются для работы виджета онлайн-записи и могут <strong>включать:</strong></p>
+                        <div className="cookie-type__examples">
                             <ul>
                                 <li>yclients_session - идентификатор сессии записи</li>
                                 <li>yc_analytics - данные аналитики использования виджета</li>
@@ -77,7 +77,7 @@ const CookiesPolicy = () => {
                             </ul>
                         </div>
                     </div>
-                    <div className="cookie-type cookie-type--new">
+                    <div className="cookie-type">
                         <h4 className="cookie-type__title">Аналитические Cookies (требуют согласия)</h4>
                         <div className="cookie-type__details">
                             <span><strong>Тип:</strong> Постоянные Cookies</span>
@@ -91,15 +91,15 @@ const CookiesPolicy = () => {
                             </ul>
                         </div>
                     </div>
-                </div>
-                <div className="cookie-type cookie-transfer">
-                    <h3 className="cookies-policy__subtitle">Передача данных третьим сторонам</h3>
-                    <p>При использовании сервиса онлайн-записи данные cookies могут передаваться:</p>
-                    <ul>
-                        <li>YCLIENTS (yclients.com) - для технического обеспечения записи</li>
-                        <li>Google (google.com) - для аналитики (при наличии согласия)</li>
-                        <li>Яндекс (yandex.ru) - для аналитики (при наличии согласия)</li>
-                    </ul>
+                    <div className="cookie-type cookie-transfer">
+                        <h4 className="cookies-policy__subtitle">Передача данных третьим сторонам</h4>
+                        <p>При использовании сервиса онлайн-записи данные cookies могут передаваться:</p>
+                        <ul className="cookie-examples">
+                            <li>YCLIENTS (yclients.com) - для технического обеспечения записи</li>
+                            <li>Google (google.com) - для аналитики (при наличии согласия)</li>
+                            <li>Яндекс (yandex.ru) - для аналитики (при наличии согласия)</li>
+                        </ul>
+                    </div>
                 </div>
             </section>
 
@@ -112,10 +112,9 @@ const CookiesPolicy = () => {
                     <a href="https://clck.ru/3PvDJh" target="_blank" className="browser-link">Microsoft Edge</a>
                     <a href="https://support.mozilla.org/en-US/kb/delete-cookies-remove-info-websites-stored" target="_blank" className="browser-link">Firefox</a>
                     <a href="https://support.apple.com/guide/safari/manage-cookies-and-website-data-sfri11471/mac" target="_blank" className="browser-link">Safari</a>
-                </div>
-
-                <div className="cookie-warning">
+                                    <div className="cookie-warning">
                     <p><strong>Обратите внимание:</strong> Отключение необходимых cookies может привести к некорректной работе сервиса онлайн-записи.</p>
+                </div>
                 </div>
             </section>
 
