@@ -2,9 +2,15 @@ import { useState, useEffect } from "react";
 import './_cookies-banner.scss';
 import Button from "../../ui/Button/Button";
 
+/**
+ * Cookies Banner component - displays cookies consent banner
+ * Shows when no cookies preference is set in local storage
+ * Dispatches custom events for other components to react to user choice
+ */
 const CookiesBanner = () => {
     const [isVisible, setIsVisible] = useState(false);
 
+    // check if user has already made cookies choice
     useEffect(() => {
         const cookiesAccepted = localStorage.getItem('cookies-accepted');
         if (!cookiesAccepted) {
@@ -12,16 +18,18 @@ const CookiesBanner = () => {
         }
     }, []);
 
+    //handle accept all cookies - set prefernce and notifies other components (widgetController) and hides banner
     const acceptAll = () => {
         localStorage.setItem('cookies-accepted', 'all');
         setIsVisible(false);
         window.dispatchEvent(new Event('cookiesChanged'));
-        console.log('Dispatching cookiesChanged event');
         window.dispatchEvent(new CustomEvent('cookiesChanged', {
             detail: { key: 'cookies-accepted', value: 'all' }
         }));
     }
-    const relectAll = () => {
+
+    // handle reject all cookies  - set preference and hides banner
+    const rejectAll = () => {
         localStorage.setItem('cookies-accepted', 'none');
         setIsVisible(false);
         window.dispatchEvent(new Event('cookiesChanged'));
@@ -43,7 +51,7 @@ const CookiesBanner = () => {
                     <Button
                         variant='bg'
                         size='small'
-                        onClick={relectAll}
+                        onClick={rejectAll}
                     >
                         Нет, спасибо
                     </Button>

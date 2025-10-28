@@ -8,7 +8,8 @@
 
     @include desktop {
         padding: $padding-desktop-48 $padding-desktop-140;
-        // max-width: 1440px;
-        // margin: 0 auto; МАСШТАБИРУЕМЫЙ САЙТ \ ИЛИ НЕТ
+        max-width: 1440px;
+        margin: 0 auto; 
+        // МАСШТАБИРУЕМЫЙ САЙТ \ ИЛИ НЕТ
     }
 }

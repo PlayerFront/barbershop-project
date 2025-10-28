@@ -8,8 +8,8 @@ const Contacts = () => {
     const contactsData = {
         phone: '8 (996) 939-99-02',
         vk: 'https://vk.com/publickom1sx53',
-        yclients: 'https://n1763817.yclients.com/', // поменять телегу
-        adress: 'Новгородская обл., г. Чудово, ул. Титова, д.14, к.2, кв.19'
+        yclients: 'https://n1763817.yclients.com/',
+        adress: 'Новгородская обл., г. Чудово, ул. Парайненская, д.8'
     };
 
     return (
@@ -45,7 +45,7 @@ const Contacts = () => {
                         <li className="contact-item">
                             <LocationIcon className="contact-item__icon" />
                             <a
-                                href="https://yandex.ru/maps/-/CLFY7YK8"
+                                href="https://yandex.ru/maps/-/CLf9E21c"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 title="Открыть в Яндекс.Картах"
@@ -58,7 +58,7 @@ const Contacts = () => {
 
                 <div className="contacts__map">
                     <iframe
-                        src="https://yandex.ru/map-widget/v1/org/k53/244689515649/?azimuth=0.11786613279784912&ll=31.662464%2C59.122517&z=16.97"
+                        src="https://yandex.ru/map-widget/v1/org/k53/120669742018/?from=mapframe&ll=31.670444%2C59.120955&z=15.33"
                         frameBorder="0"
                         allowFullScreen={true}
                         title="местоположение барбершопа к53"

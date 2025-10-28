@@ -16,8 +16,6 @@
 }
 
 .modal {
-
-    /* Стилизация скроллбара для Webkit браузеров (Chrome, Safari, Edge) */
     &::-webkit-scrollbar {
         width: 8px;
     }
@@ -42,17 +40,18 @@
     max-height: 80vh;
     overflow-y: auto;
     position: relative;
-    padding: 35px 28px 37px 23px;
+    padding: 45px 28px 37px 23px;
     display: flex;
     flex-direction: column;
     gap: 30px;
+        line-height: 1.6;
 
     @include desktop {
         padding: 35px 51px 26px 50px;
     }
 
     &__header {
-        text-align: center;
+        text-align: left;
     }
 
     &__content {
