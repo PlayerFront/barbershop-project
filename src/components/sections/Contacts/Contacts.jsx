@@ -8,7 +8,7 @@ const Contacts = () => {
     const contactsData = {
         phone: '8 (996) 939-99-02',
         vk: 'https://vk.com/publickom1sx53',
-        yclients: 'https://n1763817.yclients.com/',
+        yclients: 'https://n1763817.yclients.com',
         adress: 'Новгородская обл., г. Чудово, ул. Парайненская, д.8'
     };
 
@@ -30,16 +30,16 @@ const Contacts = () => {
                                 href={contactsData.vk}
                                 target="_blank"
                                 rel="noopener noreferrer">
-                                https://vk.com/publickom1sx5
+                                {contactsData.vk}
                             </a>
                         </li>
                         <li className="contact-item">
-                            <YClientsIcon className="contact-item__icon" /> {/*Поменять иконку телеги */}
+                            <YClientsIcon className="contact-item__icon" /> 
                             <a
-                                href={contactsData.yclients} // поменять телегу
+                                href={contactsData.yclients}
                                 target="_blank"
                                 rel="noopener noreferrer">
-                                https://n1763817.yclients.com/
+                                {contactsData.yclients}
                             </a>
                         </li>
                         <li className="contact-item">
@@ -49,7 +49,7 @@ const Contacts = () => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 title="Открыть в Яндекс.Картах"
-                                >
+                            >
                                 {contactsData.adress}
                             </a>
                         </li>

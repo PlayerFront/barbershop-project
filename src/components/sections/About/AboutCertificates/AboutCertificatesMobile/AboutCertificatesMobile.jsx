@@ -11,10 +11,15 @@ import cert3 from '../../../../../assets/images/certs/certificate-3.webp';
 import cert4 from '../../../../../assets/images/certs/certificate-4.webp';
 import cert5 from '../../../../../assets/images/certs/certificate-5.webp';
 import cert6 from '../../../../../assets/images/certs/certificate-6.webp';
+
 import prevBtn from '../../../../../assets/icons/previous-button.svg';
 import nextBtn from '../../../../../assets/icons/next-button.svg';
 
-
+/**
+ * AboutCertificatesMobile - Mobile certificates carousel component
+ * Displays a swipeable carousel of barbershop certificates for mobile devices
+ * Uses Swiper.js for touch-friendly sliding and navigation
+ */
 const AboutCertificatesMobile = () => {
     const certificates = [cert1, cert2, cert3, cert4, cert5, cert6];
 
@@ -24,7 +29,7 @@ const AboutCertificatesMobile = () => {
                 modules={[Navigation]}
                 spaceBetween={15}
                 loop={true}
-                speed={400} // Задать скорость всем анимациям
+                speed={400}
                 slidesPerView={1}
                 navigation={{
                     nextEl: '.about-certificates-mobile__btn--next',

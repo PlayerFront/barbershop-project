@@ -6,6 +6,7 @@ const YClientsIcon = () => {
             href="https://n1763817.yclients.com/"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Записаться на стрижку"
         >
             <img
                 src={YClientsSvg}

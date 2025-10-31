@@ -6,13 +6,13 @@ const BurgerMenuIcon = ({ isOpen, onClick }) => {
         <button
             className={`burger-menu-icon ${isOpen ? 'burger-menu-icon--open' : ''}`}
             onClick={onClick}
-            aria-label={isOpen ? "Закрыть меню" : "Открыть меню"} 
-            >
-        <img
-            src={BurgerMenuSvg}
-            alt="Мею сайта"
-            className="burger-menu__svg"
-        />
+            aria-label={isOpen ? "Закрыть меню" : "Открыть меню"}
+        >
+            <img
+                src={BurgerMenuSvg}
+                alt="Мею сайта"
+                className="burger-menu__svg"
+            />
         </button >
     );
 };

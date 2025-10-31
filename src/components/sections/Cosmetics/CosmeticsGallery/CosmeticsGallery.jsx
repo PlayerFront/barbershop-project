@@ -7,6 +7,13 @@ import CarouselButton from '../../../ui/CarouselButton/CarouselButton';
 import prevBtn from '../../../../assets/icons/previous-button.svg';
 import nextBtn from '../../../../assets/icons/next-button.svg';
 
+/**
+ * CosmeticsGallery - products brands carousel component
+ * Displays a responsive gallery of cosmetics products with dynamic image loading
+ * Uses Vite's import.meta.glob for efficient asset loading and Swiper for carousel
+ * Dynamically import and sort cosmetics product images using Vite's glob import
+ * Images are sorted by number in filename (brand-product-1.webp, brand-product-2.webp, etc.)
+ */
 const CosmeticsGallery = () => {
     const cosmeticsImages = Object.values(import.meta.glob('../../../../assets/images/brands/brand-*.webp', {
         eager: true,
@@ -23,7 +30,7 @@ const CosmeticsGallery = () => {
             }
             return getNumber(a) - getNumber(b);
         });
-        
+
     return (
         <div className="cosmetics-gallery">
             <Swiper

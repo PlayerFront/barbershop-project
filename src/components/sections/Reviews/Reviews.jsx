@@ -1,7 +1,12 @@
 import './_reviews.scss';
-import { useIsMobile } from '../../../hooks/useIsMobile'; // Здесь должен быть адрес док-та
+import { useIsMobile } from '../../../hooks/useIsMobile';
 import StarIcon from '../../../assets/icons/star.svg';
 
+/**
+ * Reviews section component
+ * All reviews data - consider moving to separate files if it grows larger
+ * Shows only 5 reviews on mobile
+ */
 const Reviews = () => {
     const isMobile = useIsMobile();
 

@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import './_footer.scss';
-import LogoAccent from '../../ui/Logo/LogoAccent/LogoAccent';
 import LogoFooter from '../../ui/LogoFooter/LogoFooter';
 import PhoneIcon from '../../ui/PhoneIcon/PhoneIcon';
 import YClientsIcon from '../../ui/YClientsIcon/YClientsIcon';
@@ -9,10 +8,13 @@ import Modal from '../../common/Modal/Modal';
 import PrivacyPolicy from '../../policies/PrivacyPolicy/PrivacyPolicy';
 import CookiesPolicy from '../../policies/CookiesPolicy/CookiesPolicy';
 
-
 const Footer = () => {
     const [modalType, setModalType] = useState(null);
 
+    /**
+     * Renders modal content based on modalType
+     * @returns {JSX.Element|null} Modal content component
+     */
     const renderModalContent = () => {
         switch (modalType) {
             case 'privacy':

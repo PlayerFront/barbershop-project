@@ -7,6 +7,7 @@ const VkIcon = () => {
             href="https://vk.com/publickom1sx53"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Открыть страницу барбершопа в социальных сетях"
         >
             <img
                 src={VkSvg}

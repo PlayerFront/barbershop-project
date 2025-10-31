@@ -1,5 +1,10 @@
 import './_button.scss';
 
+
+/**
+ * Universal Button/Link component
+ * Renders either <button> or <a> tag based on props
+ */
 const Button = ({
     children,
     variant = 'accent',
@@ -19,11 +24,11 @@ const Button = ({
 
     if (href) {
         return (
-            <a 
-                className={className} 
+            <a
+                className={className}
                 href={href}
                 {...linkProps}
-                {...props} 
+                {...props}
             >
                 {children}
             </a>
