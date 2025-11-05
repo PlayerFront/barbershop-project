@@ -9,6 +9,7 @@
     background: $color-bg;
     padding: 35px 28px 37px 23px;
     z-index: 2002;
+    min-width: 363px;
     max-width: 510px;
     transition: right 0.4s ease-in-out, transform 0.4s ease-in-out;
     @include mobile {

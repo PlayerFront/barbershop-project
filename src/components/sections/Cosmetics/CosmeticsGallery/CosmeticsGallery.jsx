@@ -26,18 +26,20 @@ const CosmeticsGallery = () => {
         const groups = {};
 
         cosmeticsImages.forEach(path => {
-            const match = path.match(/brand-product-(\d+)-(\d+)-[a-zA-Z0-9]+\.webp/);
+            const match = path.match(/brand-product-(\d+)-(\d+)(-[a-zA-Z0-9]+)?\.webp/);
             if (match) {
                 const [, number, size] = match;
                 if (!groups[number]) groups[number] = {};
 
-                const productionPath = path.replace('/src/assets/images/brands', '/assets'); // prod version
-                groups[number][size] = productionPath; // path for dev version
+                // const productionPath = path.replace('/src/assets/images/brands', '/assets'); // prod version
+                groups[number][size] = path; // path for dev version
             } else {
-                console.log('Путь не распознан', productionPath);
+                console.log('Путь не распознан', path);
             }
         });
  
+         console.log('Группы после обработки:', groups);
+
         return Object.keys(groups)
             .sort((a, b) => parseInt(a) - parseInt(b))
             .map(number => groups[number]);
