@@ -22,37 +22,19 @@ const CosmeticsGallery = () => {
 
     console.log('Все изображения:', cosmeticsImages); // 👈 ДОБАВЬ
 
-
-    // const getAdaptiveSet = (baseImagePath) => {
-
-    //     const productionPath = baseImagePath.replace('/src/assets/images/brands', '/assets');
-    //     const basePath = productionPath.replace('-800.webp', '');
-
-    //     console.log('Исходный путь:', productionPath); // 👈 ДОБАВЬ ЭТО
-    //     return {
-    //         src: productionPath, // средний размер по умолчанию
-    //         srcSet: `
-    //             ${basePath}-400.webp 400w,
-    //             ${basePath}-800.webp 800w,
-    //             ${basePath}-1200.webp 1200w
-    //         `,
-    //         sizes: `(max-width: 768px) 400px,
-    //                 (max-width: 1200px) 800px,
-    //                 1200px`
-    //     };
-    // };
-
     const getImageGroups = () => {
         const groups = {};
 
         cosmeticsImages.forEach(path => {
-            const match = path.match(/brand-product-(\d+)-(\d+)\.webp/);
+            const match = path.match(/brand-product-(\d+)-(\d+)-[a-zA-Z0-9]+\.webp/);
             if (match) {
                 const [, number, size] = match;
                 if (!groups[number]) groups[number] = {};
 
                 const productionPath = path.replace('/src/assets/images/brands', '/assets'); // prod version
                 groups[number][size] = productionPath; // path for dev version
+            } else {
+                console.log('Путь не распознан', productionPath);
             }
         });
  
