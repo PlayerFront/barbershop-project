@@ -26,15 +26,18 @@ const CosmeticsGallery = () => {
         const groups = {};
 
         cosmeticsImages.forEach(path => {
-            const match = path.match(/brand-product-(\d+)-(\d+)(-[a-zA-Z0-9]+)?\.webp/);
-            if (match) {
-                const [, number, size] = match;
-                if (!groups[number]) groups[number] = {};
+            const filename = path.split('/').pop();
+            const parts = filename.split('-');
 
-                // const productionPath = path.replace('/src/assets/images/brands', '/assets'); // prod version
-                groups[number][size] = path; // path for dev version
+            if(parts.length >= 4 && parts[0] === 'brand' && parts[1] === 'product') {
+                const number = parts[2];
+                const size = parts[3].replace('.webp', '');
+
+                if (!groups[number]) groups[number] = {};
+                groups[number][size] = path;
+                console.log('Успещно:', filename, ' номер', number, ' размер', size);
             } else {
-                console.log('Путь не распознан', path);
+                console.log('Не распознан формат', filename);
             }
         });
  
