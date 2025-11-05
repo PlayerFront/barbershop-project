@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>Modal.jsx</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="..\..\..\..\docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>Modal.jsx</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-1">&#x00a7;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;./_modal.scss&#x27;</span>;
+<span class="hljs-keyword">import</span> closeIcon <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../../../assets/icons/close-icon.svg&#x27;</span>;
+
+<span class="hljs-comment">/**
+ * Resauble Modal component for displaying various content
+ * Supports overlay click to close and accessible close button
+ * Used for CookiesPolicy and PrivacyPolicy modals
+ */</span>
+
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">Modal</span> = (<span class="hljs-params">{ isOpen, onClose, children, title }</span>) =&gt; {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-2">&#x00a7;</a>
+              </div>
+              <p>early return if modal isn’t open </p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">if</span> (!isOpen) <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+
+
+    <span class="hljs-comment">/**
+     * Handle overlay click - close modal only when user&#x27;s clicking on backdrop
+     * Prevents accidental closing when clicking inside Modal content
+     */</span>
+    <span class="hljs-keyword">const</span> <span class="hljs-title function_">handleOverlayClick</span> = (<span class="hljs-params">e</span>) =&gt; {
+        <span class="hljs-keyword">if</span> (e.<span class="hljs-property">target</span> === e.<span class="hljs-property">currentTarget</span>) {
+            <span class="hljs-title function_">onClose</span>();
+        }
+    };
+
+    <span class="hljs-keyword">return</span> (
+        <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&#x27;modal-overlay&#x27;</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{handleOverlayClick}</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&#x27;modal&#x27;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                    <span class="hljs-attr">className</span>=<span class="hljs-string">&#x27;modal__close&#x27;</span>
+                    <span class="hljs-attr">onClick</span>=<span class="hljs-string">{onClose}</span>
+                    <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&#x27;Закрыть&#x27;</span>
+                &gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">img</span>
+                        <span class="hljs-attr">src</span>=<span class="hljs-string">{closeIcon}</span>
+                        <span class="hljs-attr">alt</span>=<span class="hljs-string">&#x27;Закрыть&#x27;</span>
+                        <span class="hljs-attr">className</span>=<span class="hljs-string">&#x27;modal__icon&#x27;</span>
+                    /&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;modal__header&quot;</span>&gt;</span>
+                    {title &amp;&amp; <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&#x27;modal__title&#x27;</span>&gt;</span>{title}<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>}
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&#x27;modal__content&#x27;</span>&gt;</span>
+                    {children}
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+    );
+};
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">Modal</span>;</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

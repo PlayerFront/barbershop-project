@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>CookiesBanner.jsx</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="..\..\..\..\docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>CookiesBanner.jsx</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-1">&#x00a7;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">import</span> { useState, useEffect } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;./_cookies-banner.scss&#x27;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">Button</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;../../ui/Button/Button&quot;</span>;
+
+<span class="hljs-comment">/**
+ * Cookies Banner component - displays cookies consent banner
+ * Shows when no cookies preference is set in local storage
+ * Dispatches custom events for other components to react to user choice
+ */</span>
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">CookiesBanner</span> = (<span class="hljs-params"></span>) =&gt; {
+    <span class="hljs-keyword">const</span> [isVisible, setIsVisible] = <span class="hljs-title function_">useState</span>(<span class="hljs-literal">false</span>);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-2">&#x00a7;</a>
+              </div>
+              <p>check if user has already made cookies choice</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-title function_">useEffect</span>(<span class="hljs-function">() =&gt;</span> {
+        <span class="hljs-keyword">const</span> cookiesAccepted = <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">getItem</span>(<span class="hljs-string">&#x27;cookies-accepted&#x27;</span>);
+        <span class="hljs-keyword">if</span> (!cookiesAccepted) {
+            <span class="hljs-title function_">setIsVisible</span>(<span class="hljs-literal">true</span>);
+        }
+    }, []);</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-3">&#x00a7;</a>
+              </div>
+              <p>handle accept all cookies - set prefernce and notifies other components (widgetController) and hides banner</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">const</span> <span class="hljs-title function_">acceptAll</span> = (<span class="hljs-params"></span>) =&gt; {
+        <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">setItem</span>(<span class="hljs-string">&#x27;cookies-accepted&#x27;</span>, <span class="hljs-string">&#x27;all&#x27;</span>);
+        <span class="hljs-title function_">setIsVisible</span>(<span class="hljs-literal">false</span>);
+        <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">dispatchEvent</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Event</span>(<span class="hljs-string">&#x27;cookiesChanged&#x27;</span>));
+        <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">dispatchEvent</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">CustomEvent</span>(<span class="hljs-string">&#x27;cookiesChanged&#x27;</span>, {
+            <span class="hljs-attr">detail</span>: { <span class="hljs-attr">key</span>: <span class="hljs-string">&#x27;cookies-accepted&#x27;</span>, <span class="hljs-attr">value</span>: <span class="hljs-string">&#x27;all&#x27;</span> }
+        }));
+    }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-4">&#x00a7;</a>
+              </div>
+              <p>handle reject all cookies  - set preference and hides banner</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    <span class="hljs-keyword">const</span> <span class="hljs-title function_">rejectAll</span> = (<span class="hljs-params"></span>) =&gt; {
+        <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">setItem</span>(<span class="hljs-string">&#x27;cookies-accepted&#x27;</span>, <span class="hljs-string">&#x27;none&#x27;</span>);
+        <span class="hljs-title function_">setIsVisible</span>(<span class="hljs-literal">false</span>);
+        <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">dispatchEvent</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Event</span>(<span class="hljs-string">&#x27;cookiesChanged&#x27;</span>));
+    }
+
+    <span class="hljs-keyword">return</span> (
+        <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">{</span>`<span class="hljs-attr">cookies-banner</span> ${<span class="hljs-attr">isVisible</span> ? &#x27;<span class="hljs-attr">cookies-banner-visible</span>&#x27; <span class="hljs-attr">:</span> &#x27;<span class="hljs-attr">cookies-banner-hidden</span>&#x27;}`}&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&#x27;cookies-banner__content&#x27;</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&#x27;cookies-banner__title&#x27;</span>&gt;</span>Мы используем файлы cookie<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&#x27;cookies-banner__text&#x27;</span>&gt;</span>Мы используем cookies для улучшения работы сайта. Продолжая использовать сайт, вы соглашаетесь с этим. <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&#x27;cookies-banner__buttons&#x27;</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span>
+                        <span class="hljs-attr">variant</span>=<span class="hljs-string">&#x27;accent&#x27;</span>
+                        <span class="hljs-attr">size</span>=<span class="hljs-string">&#x27;small&#x27;</span>
+                        <span class="hljs-attr">onClick</span>=<span class="hljs-string">{acceptAll}</span>
+                    &gt;</span>
+                        Принять всё
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">Button</span>
+                        <span class="hljs-attr">variant</span>=<span class="hljs-string">&#x27;bg&#x27;</span>
+                        <span class="hljs-attr">size</span>=<span class="hljs-string">&#x27;small&#x27;</span>
+                        <span class="hljs-attr">onClick</span>=<span class="hljs-string">{rejectAll}</span>
+                    &gt;</span>
+                        Нет, спасибо
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+    );
+};
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">CookiesBanner</span>;</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

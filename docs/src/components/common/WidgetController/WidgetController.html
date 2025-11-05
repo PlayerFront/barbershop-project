@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>WidgetController.jsx</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="..\..\..\..\docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>WidgetController.jsx</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="sswrap ">
+                <a class="ss" href="#section-1">&#x00a7;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">import</span> { useState, useEffect } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;react&quot;</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">&#x27;./_widget-controller.scss&#x27;</span>;
+
+<span class="hljs-comment">/**
+ * Custom widget-controller (replaced YClients widget-controller)
+ * Floating booking button appears on scroll
+ * Integrate with YClients booking widget and respects cookies preferences
+ * Shows only after user interacts with CookiesBanner 
+ * Respect user&#x27;s cookies preferences
+ */</span>
+
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">WidgetController</span> = (<span class="hljs-params"></span>) =&gt; {
+    <span class="hljs-keyword">const</span> [isVisible, setIsVisible] = <span class="hljs-title function_">useState</span>(<span class="hljs-literal">false</span>);
+    <span class="hljs-keyword">const</span> [cookiesAccepted, setCookiesAccepted] = <span class="hljs-title function_">useState</span>(<span class="hljs-literal">false</span>);
+
+
+    <span class="hljs-comment">/**
+     * Effect for cookies status check and event listeners
+     * Checks if user has seen cookies banner and sets up change listeners
+     */</span>
+    <span class="hljs-title function_">useEffect</span>(<span class="hljs-function">() =&gt;</span> {
+        <span class="hljs-keyword">const</span> <span class="hljs-title function_">checkCookiesStatus</span> = (<span class="hljs-params"></span>) =&gt; {
+            <span class="hljs-keyword">const</span> cookiesValue = <span class="hljs-variable language_">localStorage</span>.<span class="hljs-title function_">getItem</span>(<span class="hljs-string">&#x27;cookies-accepted&#x27;</span>);
+            <span class="hljs-keyword">const</span> hasSeenBanner = cookiesValue !== <span class="hljs-literal">null</span>;
+            <span class="hljs-title function_">setCookiesAccepted</span>(hasSeenBanner);
+        };
+
+        <span class="hljs-keyword">const</span> <span class="hljs-title function_">handleEvent</span> = (<span class="hljs-params"></span>) =&gt; {
+            <span class="hljs-title function_">checkCookiesStatus</span>();
+        };
+
+        <span class="hljs-title function_">checkCookiesStatus</span>();
+
+        <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;storage&#x27;</span>, handleEvent);
+        <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;cookiesChanged&#x27;</span>, handleEvent);
+
+        <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> {
+            <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">removeEventListener</span>(<span class="hljs-string">&#x27;storage&#x27;</span>, handleEvent);
+            <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">removeEventListener</span>(<span class="hljs-string">&#x27;cookiesChanged&#x27;</span>, handleEvent);
+        };
+    }, []);
+
+
+    <span class="hljs-comment">/**
+     * Effect for scroll detection and button visibility
+     * Shows/hides button based on scroll position with debouncing
+     */</span>
+    <span class="hljs-title function_">useEffect</span>(<span class="hljs-function">() =&gt;</span> {
+        <span class="hljs-keyword">const</span> <span class="hljs-title function_">handleScroll</span> = (<span class="hljs-params"></span>) =&gt; {
+            <span class="hljs-keyword">const</span> header = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelector</span>(<span class="hljs-string">&#x27;.header&#x27;</span>);
+
+            <span class="hljs-keyword">if</span> (header) {
+                <span class="hljs-keyword">const</span> headerHeight = header.<span class="hljs-property">offsetHeight</span>;
+                <span class="hljs-keyword">const</span> shouldBeVisible = <span class="hljs-variable language_">window</span>.<span class="hljs-property">scrollY</span> &gt; headerHeight;
+
+                <span class="hljs-keyword">if</span> (shouldBeVisible !== isVisible) {
+                    <span class="hljs-title function_">setIsVisible</span>(shouldBeVisible);
+                }
+            }
+        };
+
+        <span class="hljs-keyword">let</span> scrollTimeOut;
+        <span class="hljs-keyword">const</span> <span class="hljs-title function_">debouncedScroll</span> = (<span class="hljs-params"></span>) =&gt; {
+            <span class="hljs-built_in">clearTimeout</span>(scrollTimeOut);
+            scrollTimeOut = <span class="hljs-built_in">setTimeout</span>(handleScroll, <span class="hljs-number">100</span>);
+        };
+
+        <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;scroll&#x27;</span>, debouncedScroll, { <span class="hljs-attr">passive</span>: <span class="hljs-literal">true</span> });
+        <span class="hljs-title function_">handleScroll</span>();
+
+        <span class="hljs-keyword">return</span> <span class="hljs-function">() =&gt;</span> {
+            <span class="hljs-variable language_">window</span>.<span class="hljs-title function_">removeEventListener</span>(<span class="hljs-string">&#x27;scroll&#x27;</span>, debouncedScroll);
+            <span class="hljs-built_in">clearTimeout</span>(scrollTimeOut);
+        }
+    }, [isVisible]);
+
+    <span class="hljs-comment">/**
+     * Handle booking button click - opens YClients widget modal
+     */</span>
+    <span class="hljs-keyword">const</span> <span class="hljs-title function_">handleBookingClick</span> = (<span class="hljs-params"></span>) =&gt; {
+        <span class="hljs-keyword">if</span> (<span class="hljs-variable language_">window</span>.<span class="hljs-property">yWidget</span> &amp;&amp; <span class="hljs-variable language_">window</span>.<span class="hljs-property">yWidget</span>.<span class="hljs-property">href</span>) {
+            <span class="hljs-variable language_">window</span>.<span class="hljs-property">yWidget</span>.<span class="hljs-title function_">show</span>(<span class="hljs-variable language_">window</span>.<span class="hljs-property">yWidget</span>.<span class="hljs-property">href</span>); <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> add fallback</span>
+        }
+    };
+
+    <span class="hljs-keyword">if</span> (!cookiesAccepted) {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+    }
+    <span class="hljs-keyword">return</span> (
+        <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+            <span class="hljs-attr">className</span>=<span class="hljs-string">{</span>`<span class="hljs-attr">custom-booking-button</span> ${<span class="hljs-attr">isVisible</span> ? &#x27;<span class="hljs-attr">button-visible</span>&#x27; <span class="hljs-attr">:</span> &#x27;<span class="hljs-attr">button-hidden</span>&#x27;}`}
+            <span class="hljs-attr">onClick</span>=<span class="hljs-string">{handleBookingClick}</span>
+            <span class="hljs-attr">aria-label</span>=<span class="hljs-string">&quot;Онлайн-запись&quot;</span>
+        &gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">className</span>=<span class="hljs-string">&quot;custom-booking-button__text&quot;</span>&gt;</span>Онлайн<span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>запись<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
+    );
+};
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title class_">WidgetController</span>;</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>
