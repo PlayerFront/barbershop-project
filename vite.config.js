@@ -9,7 +9,12 @@ export default defineConfig({
     createHtmlPlugin({
       minify: true,
       inject: {
-        data: injectData
+        data: {
+          injectPreload: process.env.NODE_ENV === 'production' ? `
+            <link rel="preload" href="./assets/index-mLQ2UMiW.css" as="style">
+            <link rel="preload" href="./assets/index-W1so9fXU.js" as="script">
+          ` : ''
+        }
       }
     })
   ],
