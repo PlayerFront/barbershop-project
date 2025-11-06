@@ -5,23 +5,61 @@ import 'swiper/css/navigation';
 import './_about-certificates-mobile.scss';
 import CarouselButton from '../../../../ui/CarouselButton/CarouselButton';
 
-import cert1 from '../../../../../assets/images/certs/certificate-1.webp';
-import cert2 from '../../../../../assets/images/certs/certificate-2.webp';
-import cert3 from '../../../../../assets/images/certs/certificate-3.webp';
-import cert4 from '../../../../../assets/images/certs/certificate-4.webp';
-import cert5 from '../../../../../assets/images/certs/certificate-5.webp';
-import cert6 from '../../../../../assets/images/certs/certificate-6.webp';
-
 import prevBtn from '../../../../../assets/icons/previous-button.svg';
 import nextBtn from '../../../../../assets/icons/next-button.svg';
 
 /**
- * AboutCertificatesMobile - Mobile certificates carousel component
- * Displays a swipeable carousel of barbershop certificates for mobile devices
- * Uses Swiper.js for touch-friendly sliding and navigation
+ * AboutCertificatesMobile - Responsive certificates carousel component for mobile devices
+ * 
+ * Displays a touch-friendly carousel of barbershop certificates with adaptive image loading.
+ * Automatically serves optimized certificate images (400px, 800px, 1200px) based on device viewport
+ * using srcSet for optimal performance on mobile devices.
+ * 
+ * Key features:
+ * - Adaptive image loading with three size variants
+ * - Touch-friendly Swiper carousel implementation
+ * - Automatic sorting and grouping of certificate images
+ * - Lazy loading for performance optimization
+ * - Mobile-first responsive design
+ * 
+ * @component
+ * @example
+ * <AboutCertificatesMobile />
+ * 
+ * File structure:
+ * certificate-1-400.webp    // mobile devices
+ * certificate-1-800.webp    // tablets  
+ * certificate-1-1200.webp   // desktop (fallback)
  */
 const AboutCertificatesMobile = () => {
-    const certificates = [cert1, cert2, cert3, cert4, cert5, cert6];
+
+    const certificateImages = Object.values(import.meta.glob('../../../../../assets/images/certs/certificate-*.webp', {
+        eager: true,
+        query: '?url'
+    })).map(item => item.default);
+
+        const getCertificateGroups = () => {
+        const groups = {};
+
+        certificateImages.forEach(path => {
+            const filename = path.split('/').pop();
+            const parts = filename.split('-');
+
+            if (parts.length >= 3 && parts[0] === 'certificate') {
+                const number = parts[1];
+                const size = parts[2].replace('.webp', '');
+
+                if (!groups[number]) groups[number] = {};
+                groups[number][size] = path;
+            }
+        });
+
+        return Object.keys(groups)
+            .sort((a, b) => parseInt(a) - parseInt(b))
+            .map(number => groups[number]);
+    }
+
+    const certificateGroups = getCertificateGroups();
 
     return (
         <div className="about-certificates-mobile">
@@ -37,16 +75,30 @@ const AboutCertificatesMobile = () => {
                 }}
                 className="about-certificates-mobile__swiper"
             >
-                {certificates.map((cert, index) => (
-                    <SwiperSlide key={index}>
-                        <img
-                            src={cert}
-                            alt={`Сертификат ${index + 1}`}
-                            className="about-certificates-mobile__image"
-                            loading="lazy"
-                        />
-                    </SwiperSlide>
-                ))}
+                {certificateGroups.map((group, index) => {
+                    const adaptiveSet = {
+                        src: group['400'],
+                        srcSet: `
+                ${group['400']} 400w,
+                ${group['800']} 800w,
+                ${group['1200']} 1200w
+                        `,
+                        sizes: `(max-width: 768px) 400px,
+                    (max-width: 1200px) 800px,
+                    1200px`
+                    }
+
+                    return (
+                        <SwiperSlide key={index}>
+                            <img
+                                {...adaptiveSet}
+                                alt={`Сертификат ${index + 1}`}
+                                className="about-certificates-mobile__image"
+                                loading="lazy"
+                            />
+                        </SwiperSlide>
+                    )
+                })}
             </Swiper>
 
             <div className="about-certificates-mobile__controls">

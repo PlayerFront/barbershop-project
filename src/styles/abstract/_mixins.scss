@@ -1,5 +1,23 @@
 @import './variables';
 
+/**
+ * MOBILE MIXIN
+ * 
+ * DESIGN CONSTRAINTS: 
+ * - No dedicated tablet design was provided by the designer
+ * - Mobile design is used for all devices up to vertical tablet size
+ * - Desktop design is used for horizontal tablets and larger
+ * 
+ * COVERS:
+ * - All mobile phones (up to 1024px width)
+ * - Vertical tablets (portrait orientation with constrained height)
+ * - Small tablets in portrait mode
+ * 
+ * BREAKDOWN:
+ * (max-width: 1024px) - Mobile phones and tablets up to 1024px wide
+ * (max-width: 1366px) and (orientation: portrait) and (max-height: 1024px) 
+ * - Vertical tablets in portrait orientation with limited height
+ */
 @mixin mobile {
 
   @media (max-width: 1024px),
@@ -8,6 +26,24 @@
   }
 }
 
+/**
+ * DESKTOP MIXIN
+ * 
+ * DESIGN APPROACH:
+ * - Desktop design serves as the baseline for horizontal tablets and larger
+ * - No intermediate tablet design - jumps directly from mobile to desktop
+ * 
+ * COVERS:
+ * - Horizontal tablets (landscape orientation from 1025px)
+ * - Large tablets (1367px and above, regardless of orientation)
+ * - All desktop computers and laptops
+ * 
+ * BREAKDOWN:
+ * (min-width: 1025px) and (orientation: landscape) 
+ * - Tablets in landscape mode (treated as small desktops)
+ * (min-width: 1367px)
+ * - Large tablets and desktops (always use desktop design)
+ */
 @mixin desktop {
 
   @media (min-width: 1025px) and (orientation: landscape),

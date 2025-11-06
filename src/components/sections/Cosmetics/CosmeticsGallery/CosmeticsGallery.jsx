@@ -8,19 +8,35 @@ import prevBtn from '../../../../assets/icons/previous-button.svg';
 import nextBtn from '../../../../assets/icons/next-button.svg';
 
 /**
- * CosmeticsGallery - products brands carousel component
- * Displays a responsive gallery of cosmetics products with dynamic image loading
- * Uses Vite's import.meta.glob for efficient asset loading and Swiper for carousel
- * Dynamically import and sort cosmetics product images using Vite's glob import
- * Images are sorted by number in filename (brand-product-1.webp, brand-product-2.webp, etc.)
+ * CosmeticsGallery - responsive cosmetics products carousel component
+ * 
+ * Displays a brand cosmetics gallery with intelligent image loading.
+ * Automatically serves optimized image sizes (400px, 800px, 1200px) based on device capabilities
+ * using srcSet for maximum performance across all devices.
+ * 
+ * Key features:
+ * - Automatic image size selection based on viewport
+ * - Groups images by product and size for efficient loading
+ * - Uses Vite's import.meta.glob for optimized asset loading
+ * - Integrates with Swiper for touch-friendly carousel
+ * - Implements lazy loading for performance optimization
+ * - Sorts images numerically by filename (brand-product-1.webp, etc.)
+ * 
+ * @component
+ * @example
+ * <CosmeticsGallery />
+ * 
+ * File structure:
+ * brand-product-1-400.webp    // mobile devices
+ * brand-product-1-800.webp    // tablets
+ * brand-product-1-1200.webp   // desktop
  */
+
 const CosmeticsGallery = () => {
     const cosmeticsImages = Object.values(import.meta.glob('../../../../assets/images/brands/brand-product-*.webp', {
         eager: true,
         query: '?url'
     })).map(item => item.default);
-
-    console.log('Все изображения:', cosmeticsImages); // 👈 ДОБАВЬ
 
     const getImageGroups = () => {
         const groups = {};
@@ -35,22 +51,15 @@ const CosmeticsGallery = () => {
 
                 if (!groups[number]) groups[number] = {};
                 groups[number][size] = path;
-                console.log('Успещно:', filename, ' номер', number, ' размер', size);
-            } else {
-                console.log('Не распознан формат', filename);
             }
         });
  
-         console.log('Группы после обработки:', groups);
-
         return Object.keys(groups)
             .sort((a, b) => parseInt(a) - parseInt(b))
             .map(number => groups[number]);
     }
 
     const imageGroups = getImageGroups();
-    console.log('Сгруппированные изображения:', imageGroups);
-
 
     return (
         <div className="cosmetics-gallery">
@@ -76,7 +85,7 @@ const CosmeticsGallery = () => {
 
                 {imageGroups.map((group, index) => {
                     const adaptiveSet = {
-                        src: group['800'], // средний размер
+                        src: group['800'], 
                         srcSet: `
                             ${group['400']} 400w,
                             ${group['800']} 800w,
@@ -86,8 +95,6 @@ const CosmeticsGallery = () => {
                                 (max-width: 1200px) 800px,
                                 1200px`
                     };
-
-                    console.log(`Продукт ${index + 1}:`, adaptiveSet);
 
                     return (
                         <SwiperSlide key={index}>
