@@ -10,13 +10,15 @@ const Header = () => {
                 rel="preload"
                 as="image"
                 href={headerBgMobile}
+                fetchpriority="high"
                 media="(max-width: 1024px), (max-width: 1366px) and (orientation: portrait) and (max-height: 1024px)"
             />
-            
+
             <link
                 rel="preload"
                 as="image"
                 href={headerBgDesktop}
+                fetchpriority="high"
                 media="(min-width: 1025px) and (orientation: landscape), (min-width: 1367px)"
             />
 
