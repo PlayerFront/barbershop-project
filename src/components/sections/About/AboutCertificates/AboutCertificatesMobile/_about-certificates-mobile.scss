@@ -11,10 +11,13 @@
     &__swiper {
         width: 100%;
         border-radius: $border-radius;
+        min-width: 350px;
     }
 
     &__image {
         border-radius: $border-radius;
+        width: 100%;
+        display: block;
     }
 
     &__controls {
